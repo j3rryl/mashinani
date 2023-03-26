@@ -231,7 +231,9 @@ if(!isset($_SESSION["user"]))
 							if(isset($_POST['submit'])){
 							$urb = "UPDATE `waste_category` SET `stat`='Confirm' WHERE id = '$id'";
 							if(mysqli_query($con,$urb)){
-								echo "<script type='text/javascript'>alert('Success')</script>";
+								echo "<script type='text/javascript'>alert('Confirmed')</script>";
+								echo "<meta http-equiv='refresh' content='0'>";
+
 
 							}
 

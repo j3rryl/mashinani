@@ -99,7 +99,7 @@ $email = $_SESSION['email'];
 								</div>
 								<div class="form-group">
                                             <label>Phone Number</label>
-                                            <input name="phone" type ="text" class="form-control" required>
+                                            <input name="phone" type ="number" class="form-control" required>
                                             
                                </div>
 							   
@@ -203,14 +203,16 @@ $email = $_SESSION['email'];
 									$con=mysqli_connect("localhost","root","","wastecollection");
 									$check="SELECT * FROM waste_category WHERE email = '$_POST[email]'";
 									$rs = mysqli_query($con,$check);
-									$data = mysqli_fetch_array($rs, MYSQLI_NUM);
-									if($data[0] > 1) {
-										echo "<script type='text/javascript'> alert('User Already in Exists')</script>";
-										
-									}
+									// $data = mysqli_fetch_array($rs, MYSQLI_NUM);
+									// if($data[0] > 1) {
+									// 	echo "<script type='text/javascript'> alert('User Already in Exists')</script>";
+                                    //     echo "<meta http-equiv='refresh' content='0'>";
 
-									else
-									{
+										
+									// }
+
+									// else
+									// {
                                         $cin =  strtotime($_POST['cin']);
                                         $cout =  strtotime($_POST['cout']);
                                         $days_between = ceil(abs($cout - $cin) / 86400);
@@ -218,22 +220,23 @@ $email = $_SESSION['email'];
 										$new ="Not Confirm";
 										$newUser="INSERT INTO `waste_category`(`FName`, `LName`, `Email`, `County`, `Consistuency`, `Phone`, `twaste`, `cin`, `cout`,`stat`,`nodays`,`nroom`) VALUES ('$_POST[fname]','$_POST[lname]','$_POST[email]','$_POST[County]','$_POST[Constituency]','$_POST[phone]', '$_POST[twaste]', '$_POST[cin]','$_POST[cout]', '$_POST[Description]', '$days_between', '$_POST[nroom]' )";
 
-                                        
                                         // echo $newUser;
                                         // exit;
 										if (mysqli_query($con,$newUser))
 										{
-											echo "<script type='text/javascript'> alert('Your application has been sent')";
+											echo "<script type='text/javascript'> alert('Your application has been sent')</script>";
                                             echo "<meta http-equiv='refresh' content='0'>";
 											
 										}
 										else
 										{
                                             echo "ERROR: Could not able to execute $sql. " . mysqli_error($con);
+                                            echo "<meta http-equiv='refresh' content='0'>";
+
 											//echo "<script type='text/javascript'> alert('Error adding user in database')</script>";
 											
 										}
-									}
+									// }
 
 							$msg="Your code is correct";
 							}
