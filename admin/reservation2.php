@@ -223,7 +223,8 @@ $email = $_SESSION['email'];
                                         // exit;
 										if (mysqli_query($con,$newUser))
 										{
-											echo "<script type='text/javascript'> alert('Your application has been sent');location.reload();</script>";
+											echo "<script type='text/javascript'> alert('Your application has been sent')";
+                                            echo "<meta http-equiv='refresh' content='0'>";
 											
 										}
 										else
